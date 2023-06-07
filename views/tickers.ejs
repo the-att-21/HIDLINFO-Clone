@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ticker Data</title>
+    <style>
+      body {
+        background-color: #f2f2f2;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+      }
+      div {
+        display: block;
+      }
+      .theme-dark {
+        position: relative;
+        background: #191d28;
+        min-height: 100vh;
+        color: #fff;
+        font-family: Oswald, sans-serif;
+      }
+      .theme-light {
+        background: #fff;
+        position: relative;
+        min-height: 100vh;
+        color: #0c0f48;
+        font-family: Oswald, sans-serif;
+        font-weight: 300;
+      }
+      h1 {
+        color: #333;
+        margin: 1em;
+        text-align: center;
+      }
+
+      table {
+        background-color: #191d28;
+        /* border-collapse: separate; */
+        border-radius: 50px;
+        border-spacing: 0 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        margin: 1rem auto;
+        width: 96%;
+    }
+    tr {
+        
+        border: 2px solid red;
+        background-color: #2e3241;
+    }
+    th,
+    td {
+        padding: 1rem;
+        text-align: center;
+        font-weight: bold;
+        color: rgb(255, 255, 255);
+    }
+    
+    th {
+        background-color: #191d28;
+        color: #818389;
+        font-size: 1.1em;
+        font-weight: bold;
+      }
+      .flat-logo {
+        width: 30%;
+        vertical-align: middle;
+        overflow-clip-margin: content-box;
+        overflow: clip;
+      }
+      .select{
+        background-color:#3c3c40;
+        color: white;
+        padding: 5px;
+        margin:0 0.5rem;
+        border-radius: 10px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="theme-dark">
+      <div style="margin-left: 2rem;margin-right: 2rem;display: flex;" >
+        <img
+          src="./logo.png"
+          alt="logo"
+          class="flat-logo"
+          style="padding: 10px;margin-left: -3rem;"
+        />
+        <div style="margin-left:14rem;margin-top: 4rem;margin-right:10rem;">
+
+            <select class="select" >
+                <option class="select" value="">INR</option>
+            </select>
+            <select class="select">
+                <option class="select" value="">XRP</option>
+            </select>
+        </div>
+        <img src="./sidebaer.png" style="margin-left: 1rem;margin-right: -1rem;" class="flat-logo" alt="" srcset="">
+      </div>
+      <table >
+        <thead >
+          <tr >
+            <th style="border-radius: 10px 0 0 10px;">#</th>
+            <th>name</th>
+            <th>Last</th>
+            <th>Buy / Sell Price</th>
+            <th>volume</th>
+            <th style="border-radius: 10px 0 0 10px;">base_unit</th>
+          </tr>
+        </thead>
+        <tbody >
+          <% let count = 0; %> <% for (const ticker of tickers) { %> <% if
+          (count >= 10) { break; } %>
+          <tr >
+            <td style="border-radius: 10px 0 0 10px;"><%=count+1;%></td>
+            <td><%= ticker.name %></td>
+            <td>₹<%= ticker.last %></td>
+            <td>₹<%= ticker.buy %>/₹<%= ticker.sell %></td>
+            <td><%= ticker.volume %></td>
+            <td style="border-radius: 0 10px 10px 0;"><%= ticker.base_unit %></td>
+          </tr>
+          <% count++; %> <% } %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
